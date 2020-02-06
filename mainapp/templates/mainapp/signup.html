@@ -1,17 +1,22 @@
-{%extends 'mainapp/common.html' %}
-{% block content%}
+{% extends 'mainapp/common.html' %}
+
+{% block content %}
 <div class="jumbotron signDiv">
 		<div class="container text-center">
-			<form class="signForm" method="post" action="/signup"
+			<form class="signForm" method="post" action="/main/signup/"
 				name="signupForm">
+				{% csrf_token %}
 				<br><br><br>
 				<h2>회원가입</h2>
 				<br></br>
+
+
 				<div class="form-group">
-					<label for="email">이메일</label> <input type="text"
-						class="form-control" id="email" name="email">
-					<div class="check_box" id="email_check"></div>
+					<label for="name">아이디</label> <input type="text"
+						class="form-control" id="name" name="name">
+					<div class="check_box" id="name_check"></div>
 				</div>
+
 				<div class="form-group">
 					<label for="pwd">비밀번호</label> <input type="password"
 						class="form-control" id="pwd" name="pwd"
@@ -25,13 +30,31 @@
 				</div>
 
 				<div class="form-group">
-					<label for="name">Name</label> <input type="text"
-						class="form-control" id="name" name="name">
+					<label for="pwd2">비밀번호 확인</label> <input type="password"
+						class="form-control" id="pwd2" name="pwd2"
+						onkeypress="caps_lock(event)">
+
+					<p id="capslock"
+						style="position: relative; border: 2px solid #003b83; width: 300px; bottom: 0px; display: none">
+						&nbsp;<b>CapsLock</b> 키가 눌려있습니다.&nbsp;
+					</p>
+					<div class="check_box" id="pwd_check"></div>
+				</div>
+
+				<div class="form-group">
+					<label for="email">이메일</label> <input type="text"
+						class="form-control" id="email" name="email">
+					<div class="check_box" id="email_check"></div>
+				</div>
+
+				<div class="form-group">
+					<label for="name">닉네임</label> <input type="text"
+						class="form-control" id="nick_name" name="nick_name">
 					<div class="check_box" id="name_check"></div>
 				</div>
 
 
-				<button class="btn btn-primary btn-block" id="signup">가입하기</button>
+				<button type="submit" class="btn btn-primary btn-block" id="signup">가입하기</button>
 			</form>
 		</div>
 	</div>

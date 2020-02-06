@@ -1,4 +1,4 @@
-{%extends 'mainapp/common.html' %}
+{% extends 'mainapp/common.html' %}
 {% block content%}
 <!-- Masthead -->
 <header class="masthead bg-primary text-white text-center">
@@ -18,19 +18,19 @@
       </div>
       <div class="divider-custom-line"></div>
     </div>
-    <button class="btn btn-primary btn-block text-uppercase mb-0" id="signin" onclick="move_login()">로그인</button>
-    <button class="btn btn-primary btn-block text-uppercase mb-0" id="signup"onclick="move_new()">회원가입</button>
+    <button class="btn btn-primary btn-block text-uppercase mb-0" id="signin" onclick="move_signin()">로그인</button>
+    <button class="btn btn-primary btn-block text-uppercase mb-0" id="signup"onclick="move_signup()">회원가입</button>
     <!-- Masthead Subheading -->
     <p class="masthead-subheading font-weight-light mb-0"></p>
 
   </div>
 </header>
 <script>
-  function move_login() {
-    location = '/signin'
+  function move_signin() {
+    location = 'signin/'
   }
-  function move_new() {
-    location = '/signup'
+  function move_signup() {
+    location = 'signup/'
   }
 </script>
 {% endblock%}
