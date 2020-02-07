@@ -1,21 +1,10 @@
 {% extends 'mainapp/common.html' %}
 {% block content %}
-	<div class="jumbotron signDiv">
-		<div class="container text-center">
+<div class="jumbotron signDiv">
+	<div class="container text-center">
 
-			<form class="signForm" method="post" action="/main/signin/">
-				{% csrf_token %}
-
-				<br><br><br>
-				<h2>Login</h2>
-				<br></br>
-				<div class="form-group">
-					<input type="text" class="form-control" id="user_id" name="user_id"
-						placeholder="id">
-				</div>
-				<div class="form-group">
-					<input type="password" class="form-control" id="user_pw" name="user_pw"
-						onkeypress="caps_lock(event)" placeholder="Password">
+		<form class="signForm" method="post" action="/main/signin/">
+			{% csrf_token %}
 
 			<br><br><br>
 			<h2>Login</h2>

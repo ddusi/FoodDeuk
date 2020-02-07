@@ -18,6 +18,7 @@ swipe_patterns = [
     path('like/', swipe_views.like, name='like'),
     path('about/', swipe_views.about, name='about'),
     path('recognition/', swipe_views.recognition, name='recognition'),
+    path('likeornot/',swipe_views.likeornot,name='likeornot')
 ]
 
 # 변수로 설정한 값을 include함.

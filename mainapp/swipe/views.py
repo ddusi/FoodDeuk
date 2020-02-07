@@ -3,6 +3,9 @@ from django.core import serializers
 from django.http import HttpResponse, JsonResponse
 from mainapp.models import *
 from scipy.spatial import distance
+from django.utils import timezone
+
+
 
 
 def like(request): #좋아요 리스트 화면
@@ -39,3 +42,21 @@ def recognition(request):
     res_json = serializers.serialize('json', res)   
     return HttpResponse(res_json, content_type='application/json')
 
+def likeornot(request):
+    Tlike_dislike = LikeDislike()
+    member_id = request.session['user_id']# 로그인 정보
+    res_id = request.GET.get('id')
+    like_dis = request.GET.get('like_dislike')
+
+    member = Member.objects.get(user_id=member_id)
+    Tlike_dislike.m = member    
+   
+    rest = Restaurant.objects.get(pk=res_id)
+    Tlike_dislike.r = rest
+
+    Tlike_dislike.like_dislike = like_dis
+    Tlike_dislike.day = timezone.now()
+
+
+    Tlike_dislike.save()
+    return HttpResponse('DB입력 OK')
