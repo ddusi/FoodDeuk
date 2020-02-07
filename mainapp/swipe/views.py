@@ -5,8 +5,6 @@ from mainapp.models import *
 from scipy.spatial import distance
 
 
-
-
 def like(request): #좋아요 리스트 화면
     return render(request, 'mainapp/like.html', {})
 

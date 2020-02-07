@@ -44,3 +44,8 @@
 .tx {
     font-size: large;
 }
+
+.ddusi{
+    padding: 14% 0rem 14% 0rem;  
+    background-image: url('/static/mainapp/img/bg.jpg')!important;
+}
