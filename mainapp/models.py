@@ -1,9 +1,12 @@
 from django.db import models
 
+
 class Favorite(models.Model):
     id = models.IntegerField(primary_key=True)
     m = models.ForeignKey('Member', models.DO_NOTHING, blank=True, null=True)
-    r = models.ForeignKey('Restaurant', models.DO_NOTHING, blank=True, null=True)
+    r = models.ForeignKey('Restaurant', models.DO_NOTHING,
+                          blank=True, null=True)
+
 
     class Meta:
         db_table = 'favorite'
@@ -12,8 +15,8 @@ class Favorite(models.Model):
 class Img(models.Model):
     img = models.CharField(max_length=200, blank=True, null=True)
     rank = models.IntegerField(blank=True, null=True)
-    r = models.ForeignKey('Restaurant', models.DO_NOTHING, blank=True, null=True)
-
+    r = models.ForeignKey('Restaurant', models.DO_NOTHING,
+                          blank=True, null=True)
     class Meta:
         db_table = 'img'
 
@@ -21,7 +24,8 @@ class Img(models.Model):
 class LikeDislike(models.Model):
     like_dislike = models.IntegerField(blank=True, null=True)
     day = models.DateField(blank=True, null=True)
-    r = models.ForeignKey('Restaurant', models.DO_NOTHING, blank=True, null=True)
+    r = models.ForeignKey('Restaurant', models.DO_NOTHING,
+                          blank=True, null=True)
     m = models.ForeignKey('Member', models.DO_NOTHING, blank=True, null=True)
 
     class Meta:
@@ -42,15 +46,16 @@ class Member(models.Model):
 
 class Menu(models.Model):
     menu_name = models.CharField(max_length=200, blank=True, null=True)
-    r = models.ForeignKey('Restaurant', models.DO_NOTHING, blank=True, null=True)
-
+    r = models.ForeignKey('Restaurant', models.DO_NOTHING,
+                          blank=True, null=True)
     class Meta:
         db_table = 'menu'
 
 
 class Recommend(models.Model):
     m = models.ForeignKey(Member, models.DO_NOTHING, blank=True, null=True)
-    r = models.ForeignKey('Restaurant', models.DO_NOTHING, blank=True, null=True)
+    r = models.ForeignKey('Restaurant', models.DO_NOTHING,
+                          blank=True, null=True)
 
     class Meta:
         db_table = 'recommend'
