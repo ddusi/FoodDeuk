@@ -61,7 +61,7 @@
 
       $
         .ajax({
-          url: '/recognition',
+          url: '/swipe/recognition/',
           type: 'GET',
           data: {
             "latitude": latitude,
@@ -69,18 +69,17 @@
           },
           success: function (res) {
 
-            //                 var html = "";
-            //                 var shtml = "";
-            //                 for (var i = 0; i < res.length; i++) {
-            //                     var marker = new kakao.maps.Marker({
-            //                         map : map,
-            //                         position : new kakao.maps.LatLng(
-            //                                 res[i].latitude,
-            //                                 res[i].longitude),
-            //                         title : res[i].title,
-            //                     });
-            //                 }
+            var html = "";
+            var shtml = "";
+            for (var i = 0; i < res.length; i++) {
+              var marker = new kakao.maps.Marker({
+                map: map,
+                position: new kakao.maps.LatLng(
+                  res[i].fields.latitude,
+                  res[i].fields.longitude)
 
+              });
+            }
             //                 // 				res[0~9].id/title/latitude/longitude
             //                 for (var i = 0; i < 9; i++) {
             //                     html += '<div class="col-md-6 col-lg-4 divPage" id="' + res[i].id + '" >'
