@@ -2,15 +2,26 @@
 {% block content%}
 <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
     <div class="container">
-        <a class="container text-center navbar-brand js-scroll-trigger" href="/swipe">SWIPE</a>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item mx-0 mx-lg-1">
-                </li>
-                <li class="nav-item mx-0 mx-lg-1">
-                </li>
-            </ul>
-        </div>
+      <a class="container text-center navbar-brand js-scroll-trigger" href="/swipe">SWIPE</a>
+      <div>
+            {% if request.session.user_id %}
+            {{ request.session.user_id }}님 반갑습니다.
+            {% endif %}
+      </div>
+      <!-- <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded"
+        type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+        aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button> -->
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mx-0 mx-lg-1">
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+          </li>
+        </ul>
+      </div>
     </div>
 </nav>
 <link rel="stylesheet" type="text/css" href="/static/mainapp/css/jTinder.css">
@@ -137,15 +148,18 @@
                 <div>{{restaurant.id}}</div>
                 <div class="like"></div>
                 <div class="dislike"></div>
-            </li> -->
-
-<!-- <li class="pane1">
+            </li>
+            {% endfor %}
+         
+         <!--
+            <li class="pane1">
                 <div class="img"></div>
                 <div>Miami Beach</div>
                 <div class="like"></div>
                 <div class="dislike"></div>
             </li>
              -->
+
 
 <!-- smuf -->
 <!-- <div id="swipe" style="width: 100%; height: 40%; margin: 0 auto;">
@@ -167,6 +181,10 @@
         </div> -->
 
 <!-- <script>
+
+
+<!-- jTinder status text  -->
+
     window.onload = function () {
         var sliderWrap = document.getElementById('sliderWrap');
         sliderObj = new Swipe(sliderWrap);
@@ -186,4 +204,87 @@
             console.log(e.pageX, e.pageY);
         })
     }
-</script> -->
+
+</script> {% endcomment %}
+
+<script>
+$("#tinderslide").jTinder({
+    onDislike: function (item) {
+        alert('Dislike image ' + (item.{{ restaurant.r_ }}));
+    },
+    onLike: function (item) {
+        alert('Like image ' + (item.index()+1));
+    },
+	animationRevertSpeed: 200,
+	animationSpeed: 400,
+	threshold: 1,
+	likeSelector: '.like',
+	dislikeSelector: '.dislike'
+});
+
+       {% for restaurant in Restaurants %}
+            <li class = "pane1">
+                <img src= "{{restaurant.r_img}}" width="100%" height="100%">
+                <div>{{restaurant.id}}</div>
+                <div class="like"></div>
+                <div class="dislike"></div>
+            </li>
+            {% endfor %}
+</script>
+
+<script>
+    navigator.geolocation
+        .getCurrentPosition(function (pos) {
+            latitude = pos.coords.latitude;
+            longitude = pos.coords.longitude;
+            // alert(" your location : " + latitude + ", " + longitude);
+
+            // $
+            //         .ajax({
+            //             url : '/map/getPoint',
+            //             type : 'GET',
+            //             data : {
+            //                 "latitude" : latitude,
+            //                 "longitude" : longitude
+            //             },
+            //             success : function(res) {
+            //                 var html = "";
+            //                 var shtml = "";
+            //                 for (var i = 0; i < res.length; i++) {
+            //                     var marker = new kakao.maps.Marker({
+            //                         map : map,
+            //                         position : new kakao.maps.LatLng(
+            //                                 res[i].latitude,
+            //                                 res[i].longitude),
+            //                         title : res[i].title,
+            //                     });
+            //                 }
+
+            //                 // 				res[0~9].id/title/latitude/longitude
+            //                 for (var i = 0; i < 9; i++) {
+            //                     html += '<div class="col-md-6 col-lg-4 divPage" id="' + res[i].id + '" >'
+            //                     html += '<div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal">'
+            //                     html += '<div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">'
+            //                     html += '<div class="portfolio-item-caption-content text-center text-white">'
+            //                     html += '<i class="fas fa-plus fa-3x"></i>'
+            //                     html += '</div>'
+            //                     html += '</div>'
+            //                     html += '<img class="img-fluid" src="'
+            //                     html += res[i].imgSrc
+            //                     html += '" alt=""> <span class="imgText">'
+            //                     html += res[i].title
+            //                     html += '</span></div>'
+            //                     html += '</div>'
+            //                 }
+            //                 $('#list').append(html);
+
+            //             }//success
+
+            //         });//ajax
+        });
+        //navigator 자기위치 요청하는 함수
+</script>
+
+
+{% endblock%}
+

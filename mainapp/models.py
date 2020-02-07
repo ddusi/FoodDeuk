@@ -7,6 +7,7 @@ class Favorite(models.Model):
     r = models.ForeignKey('Restaurant', models.DO_NOTHING,
                           blank=True, null=True)
 
+
     class Meta:
         db_table = 'favorite'
 
@@ -16,7 +17,6 @@ class Img(models.Model):
     rank = models.IntegerField(blank=True, null=True)
     r = models.ForeignKey('Restaurant', models.DO_NOTHING,
                           blank=True, null=True)
-
     class Meta:
         db_table = 'img'
 
@@ -48,7 +48,6 @@ class Menu(models.Model):
     menu_name = models.CharField(max_length=200, blank=True, null=True)
     r = models.ForeignKey('Restaurant', models.DO_NOTHING,
                           blank=True, null=True)
-
     class Meta:
         db_table = 'menu'
 

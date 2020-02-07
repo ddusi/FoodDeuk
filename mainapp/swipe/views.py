@@ -6,8 +6,6 @@ from scipy.spatial import distance
 from django.utils import timezone
 
 
-
-
 def like(request): #좋아요 리스트 화면
     return render(request, 'mainapp/like.html', {})
 
