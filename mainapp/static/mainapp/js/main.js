@@ -6,14 +6,43 @@ function Init() {
 		// dislike callback
 		onDislike: function (item) {
 			// set the status text
-			alert('Dislike image ' + (item.index()+1));
 			$('#status').html('Dislike image ' + (item.index() + 1));
+			var id =$(item).attr('pk');
+			console.log(id)
+			$
+			.ajax({
+				url: '/swipe/likeornot/',
+				type: 'GET',
+				data: {
+					'id' : id,
+					'like_dislike' : 0
+				},
+				success: function (res) {
+				}//success
+
+			});//ajax
+
+
 		},
 		// like callback
 		onLike: function (item) {
 			// set the status text
-			alert('Like image ' + (item.index()+1));
 			$('#status').html('Like image ' + (item.index() + 1));
+			var id = $(item).attr('pk');
+			console.log(id)
+			$
+			.ajax({
+				url: '/swipe/likeornot/',
+				type: 'GET',
+				data: {
+					'id' : id,
+					'like_dislike' : 1
+				},
+				success: function (res) {
+				}//success
+
+			});//ajax
+
 		},
 		animationRevertSpeed: 200,
 		animationSpeed: 400,
