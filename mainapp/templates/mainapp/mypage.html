@@ -147,7 +147,7 @@
               });
             }
             // 				res[0~9].id/title/latitude/longitude
-            for (var i = 0; i < 9; i++) {
+            for (var i = res.length-1; i > res.length-9; i--) {
               html += '<div class="col-md-6 col-lg-4 divPage" id="' + res[i].pk + '" >'
               html += '<div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal">'
               html += '<div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">'
@@ -160,6 +160,9 @@
               html += '" alt=""> <span class="imgText">'
               html += res[i].fields.r_name
               html += '</span></div>'
+              html += '<li class = "address" style = "display:none;">'
+              html += res[i].fields.address_road
+              html += '</li>'
               html += '</div>'
             }
             $('#list').append(html);
@@ -171,9 +174,11 @@
   $(document).on("click", "div[data-toggle=modal]", function () {
     var text = $(this).text();
     var imgSrc = $(this).find('img').attr('src');
+    var address = $(this).find('li').text(); // 여기 질문하기!
     $('.portfolio-modal-title').text(text);//res[i].r_name
     $('#portfolioModal .img-fluid').attr('src', imgSrc);//res[i].fields.r_img
-    console.log(text , imgSrc)
+    // $('#portfolioModal .mb-5').text(address);
+    console.log(text , imgSrc, address)
   });
 
 </script>

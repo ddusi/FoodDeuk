@@ -43,20 +43,25 @@ def recognition(request):
     return HttpResponse(res_json, content_type='application/json')
 
 def likeornot(request):
-    Tlike_dislike = LikeDislike()
-    member_id = request.session['user_id']# 로그인 정보
-    res_id = request.GET.get('id')
-    like_dis = request.GET.get('like_dislike')
+    Tlike_dislike = LikeDislike()# DB테이블 내역 불러와 Tlike_dislike에 저장
+    member_id = request.session['user_id']# 현재 로그인되어 있는 정보 가져옴
+    res_id = request.GET.get('id')# main.js 에서 ajax로 보낸 식당id 값 저장
+    like_dis = request.GET.get('like_dislike')#main.js에서 ajax로 보낸 like_dislike 값 저장
 
-    member = Member.objects.get(user_id=member_id)
-    Tlike_dislike.m = member    
+    member = Member.objects.get(user_id=member_id)# DB 테이블(Member)에서 user_id 가 member_id와 동일한 내용 조회하여 저장
+    Tlike_dislike.m = member #like_dislike DB에 조회한 member값 입력
    
-    rest = Restaurant.objects.get(pk=res_id)
-    Tlike_dislike.r = rest
+    rest = Restaurant.objects.get(pk=res_id) # 입력받은 식당 관련 내역 DB 조회하여 입력
+    Tlike_dislike.r = rest # like_dislike DB에 저장
 
-    Tlike_dislike.like_dislike = like_dis
-    Tlike_dislike.day = timezone.now()
-
+    Tlike_dislike.like_dislike = like_dis# 테이블의 like_dislike 속성 값에 like_dis값 입력
+    Tlike_dislike.day = timezone.now()# 테이블의 day 속성 값에 현재시간 입력
 
     Tlike_dislike.save()
     return HttpResponse('DB입력 OK')
+
+def load_likeornot(request):
+    sql = '''select restaurant.id,restaurant.r_name,restaurant.r_img,restaurant.r_kind,restaurant.des,restaurant.address,restaurant.address_road,restaurant.latitude,restaurant.longitude,restaurant.closetime,restaurant.number from restaurant join like_dislike on restaurant.id = like_dislike.r_id where like_dislike=1;'''
+    likeres = Restaurant.objects.raw(sql)# SQL 문에서 반경 20KM 이내 값만 조회하여 가져옴
+    likeres_json = serializers.serialize('json', likeres) 
+    return HttpResponse(likeres_json, content_type='application/json')
