@@ -1,0 +1,330 @@
+/* 모든 부분에 자리 0으로 */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* header 위치 나누기 부분 */
+.hd {
+    position: relative;
+    top: 0;
+    width: 92%;
+    height: 60px;
+    padding-left: 4%;
+    padding-right: 4%;
+    background-color: #eee;
+    border-bottom-right-radius: 25px 20px;
+    border-bottom-left-radius: 25px 20px;
+    
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+
+}
+
+
+/* 마이페이지 버튼 */
+.left-button {
+    position: relative;
+    
+    font-size: 25px;
+    color: #a0a0a0;
+
+}
+
+/* 로고 버튼 */
+.center-button {
+    position: relative;
+    font-size: 30px;
+   
+}
+
+/* 로고색상 */
+.fa-stroopwafel{
+    color: rgb(189, 71, 71);
+    font-size: 30px;
+}
+
+/* like list 버튼 */
+.right-button {
+    position: relative;
+    float: right;
+    font-size: 23px;
+    color: #a0a0a0;
+
+}
+
+
+/* dislike 버튼 */
+.fa-times {
+    position: absolute;
+    left: 0;
+    top: 23px;
+    width: 54px;
+    height: 54px;
+    font-size: 54px;
+    color: rgb(255, 255, 255);
+    text-shadow: 3px 6px 18px rgba(117, 14, 14, 0.75);
+}
+
+/* like 버튼 */
+.fa-heart {
+    position: relative;
+    font-size: 44px;
+    color: rgb(255, 255, 255);
+    text-shadow: 3px 6px 18px rgba(103, 51, 133, 0.75);
+}
+
+
+
+/* 배경화면 레이아웃 */
+.ui-page {
+    background-image: url('../img/bg1.png');
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.295);
+    background-size: cover;
+    background-position: bottom center;
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+/* 
+.curtain {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+    background:
+        linear-gradient(180deg, rgb(255, 255, 255, 0), rgb(255, 255, 255, 0));
+} */
+
+.content {
+    position: relative;
+    border-color: brown;
+    left: 3%;
+    top: 0;
+    width: 94%;
+    height: calc(100vh - 150px);
+    overflow: auto;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
+
+    box-shadow: 0px 3px 9px rgba(46, 2, 2, 0.404);
+    border-radius: 4px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+/*footer*/
+.bottom {
+    position: absolute;
+    left: 10%;
+    bottom: 0;
+
+    width: 80%;
+    height: 100px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.bottom.actions2 {
+    position: absolute;
+    left: 10%;
+    bottom: 0;
+    width: 80%;
+    height: 100px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+
+/* .fa-times.w {
+    position: absolute;
+    left: -3;
+    top: 25px;
+    font-size: 54px;
+    color: rgb(255, 255, 255);
+    text-shadow: 3px 6px 18px rgba(117, 14, 14, 0.75);
+
+
+} */
+
+
+/* .fa-times::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 60px;
+    height: 60px;
+    background: white;
+    border-radius: 50%;
+} */
+
+/* .bottom.actions2>.dislike>.fa-times2::before {
+
+    font-size: 50px;
+    color: rgb(255, 255, 255);
+
+
+
+} */
+
+
+
+.fa-times.w {
+    position: absolute;
+    left: 0;
+    top: 23px;
+    font-size: 54px;
+    color: rgb(255, 255, 255);
+    text-shadow: 3px 6px 18px rgba(117, 14, 14, 0.75);
+
+
+}
+
+.fa-times::before {
+
+    font-size: 54px;
+    color: rgb(255, 255, 255);
+    background: rgb(33, 85, 106);
+    background: linear-gradient(-45deg, rgba(33, 85, 106, 1) 96%, rgba(142, 105, 112, 1) 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: white;
+    display: initial;
+
+
+}
+
+.fa-times.w::before {
+
+    font-size: 54px;
+    color: rgb(255, 255, 255);
+    background: rgb(33, 85, 106);
+    background: linear-gradient(-45deg, rgba(33, 85, 106, 1) 96%, rgba(142, 105, 112, 1) 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: white;
+    display: initial;
+
+
+}
+
+.fa-heart::before {
+    font-size: 44px;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f00), to(#333));
+    background: rgb(253, 29, 29);
+    background: linear-gradient(120deg, rgba(253, 29, 29, 1) 40%, rgb(255, 176, 66) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: white;
+    display: initial;
+    color: rgb(255, 255, 255);
+}
+
+
+
+
+
+/* .fa-heart::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    font-size: 44px;
+
+
+} */
+
+.content_like {
+    /* width: 56vh;
+    height: auto; */
+    width: 100vw;
+    height: 94vh;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.like_day {
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    font-size: 30px;
+
+}
+
+/* .like_list_container{
+   display:flex;
+   align-items: center;
+   justify-content: start;
+   flex-direction: row;
+   flex-wrap: wrap;
+
+   width: auto;
+   margin-left: 9px;
+   margin-top: 5px;
+   height: 110vh;
+   overflow: scroll;
+   -webkit-overflow-scrolling: touch;
+} */
+
+.like_list_container {
+    display: inline-flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    margin-left: 9px;
+    height: auto;
+}
+
+.like_element {
+    list-style:none;
+    padding-left:0px;
+    height: 120px;
+    width: 120px;
+    margin: 5px;
+
+    border: 1px solid;
+    border-radius: 15%;
+    box-shadow: 0px 3px 9px rgba(46, 2, 2, 0.404);
+    border-color: transparent;
+
+    flex: 1 1 1;
+}
+
+
+/* .like_element {
+    list-style:none;
+    padding-left:0px;
+    height: 120px;
+    width: 120px;
+    margin: 5px;
+
+    border: 1px solid;
+    border-radius: 15%;
+    box-shadow: 0px 3px 9px rgba(46, 2, 2, 0.404);
+    border-color: transparent;
+
+    
+    flex-basis: 120px;
+    min-width: 120px;
+    height: 120px;
+} */
+
+.like_text {
+    text-align: center;
+}

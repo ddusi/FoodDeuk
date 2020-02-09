@@ -1,0 +1,186 @@
+{%extends 'mainapp/comtwo.html' %}
+{% block content%}
+<nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+  <div class="container">
+    <a class="container text-center navbar-brand js-scroll-trigger" href="/mypage">MYPAGE</a>
+    <!-- <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded"
+        type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+        aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button> -->
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item mx-0 mx-lg-1">
+        </li>
+        <li class="nav-item mx-0 mx-lg-1">
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="jumbotron">
+  <div class="container">
+    <br><br><br>
+    <div id="map" style="width: 100%; height: 350px; margin: 0 auto;"></div>
+  </div>
+</div>
+
+<!-- Portfolio Section -->
+<section class="page-section portfolio" id="portfolio">
+  <div class="container">
+
+    <!-- # Portfolio Section Heading  -->
+    <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">LIKE LIST</h2>
+
+    <!-- Icon Divider  -->
+    <div class="divider-custom">
+      <div class="divider-custom-line"></div>
+      <div class="divider-custom-icon">
+        <i class="fas fa-star"></i>
+      </div>
+      <div class="divider-custom-line"></div>
+    </div>
+
+    <!-- Portfolio Grid Items  -->
+    <div class="row" id="list"></div>
+<!-- 여기에 DB 저장되어있는 값 불러옴~ -->
+
+
+  </div>
+</section>
+
+  <!-- Portfolio Modal 1 -->
+  <div class="portfolio-modal modal fade" id="portfolioModal" tabindex="-1" role="dialog"
+    aria-labelledby="portfolioModal1Label" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">
+            <i class="fas fa-times"></i>
+          </span>
+        </button>
+        <div class="modal-body text-center">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-lg-8">
+                <!-- Portfolio Modal - Title -->
+                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Log Cabin</h2>
+                <!-- Icon Divider -->
+                <div class="divider-custom">
+                  <div class="divider-custom-line"></div>
+                  <div class="divider-custom-icon">
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <div class="divider-custom-line"></div>
+                </div>
+                <!-- Portfolio Modal - Image -->
+                <img class="img-fluid rounded mb-5" src="/static/mainapp/img/portfolio/cabin.png" alt="">
+                <!-- Portfolio Modal - Text -->
+                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam
+                  nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae?
+                  Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+                <button class="btn btn-primary" href="#" data-dismiss="modal">
+                  <i class="fas fa-times fa-fw"></i>
+                  닫기
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=51df918843905cae9b7b7d07b977da49"></script>
+<script>
+  navigator.geolocation
+    .getCurrentPosition(function (pos) {
+      latitude = pos.coords.latitude;
+      longitude = pos.coords.longitude;
+      // alert(" your location : " + latitude + ", " + longitude);
+
+      var container = document.getElementById('map');
+      var options = {
+        center: new kakao.maps.LatLng(latitude, longitude), // 강남역 37.4980239, 127.027572
+        level: 4
+      };
+      var map = new kakao.maps.Map(container, options);
+      var markerPosition = new kakao.maps.LatLng(latitude,
+        longitude);
+      var marker = new kakao.maps.Marker({
+        position: markerPosition
+      });
+      marker.setMap(map);
+
+      function resizeMap() {
+        var mapContainer = document.getElementById('map');
+        mapContainer.style.width = '650px';
+        mapContainer.style.height = '650px';
+      }
+      function relayout() {
+        // 지도를 표시하는 div 크기를 변경한 이후 지도가 정상적으로 표출되지 않을 수도 있습니다
+        // 크기를 변경한 이후에는 반드시  map.relayout 함수를 호출해야 합니다 
+        // window의 resize 이벤트에 의한 크기변경은 map.relayout 함수가 자동으로 호출됩니다
+        map.relayout();
+      }
+
+      $
+        .ajax({
+          url: '/swipe/load_likeornot/',
+          type: 'GET',
+          data: {
+            "latitude": latitude,
+            "longitude": longitude
+          },
+          success: function (res) {
+
+            var html = "";
+            var shtml = "";
+            for (var i = 0; i < res.length; i++) {
+              var marker = new kakao.maps.Marker({
+                map: map,
+                position: new kakao.maps.LatLng(
+                  res[i].fields.latitude,
+                  res[i].fields.longitude)
+
+              });
+            }
+            // 				res[0~9].id/title/latitude/longitude
+            for (var i = res.length-1; i > res.length-9; i--) {
+              html += '<div class="col-md-6 col-lg-4 divPage" id="' + res[i].pk + '" >'
+              html += '<div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal">'
+              html += '<div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">'
+              html += '<div class="portfolio-item-caption-content text-center text-white">'
+              html += '<i class="fas fa-plus fa-3x"></i>'
+              html += '</div>'
+              html += '</div>'
+              html += '<img class="img-fluid" src="'
+              html += res[i].fields.r_img
+              html += '" alt=""> <span class="imgText">'
+              html += res[i].fields.r_name
+              html += '</span></div>'
+              html += '<li class = "address" style = "display:none;">'
+              html += res[i].fields.address_road
+              html += '</li>'
+              html += '</div>'
+            }
+            $('#list').append(html);
+
+          }//success
+
+        });//ajax
+    });//navigator 자기위치 요청하는 함수
+  $(document).on("click", "div[data-toggle=modal]", function () {
+    var text = $(this).text();
+    var imgSrc = $(this).find('img').attr('src');
+    var address = $(this).find('li').text(); // 여기 질문하기!
+    $('.portfolio-modal-title').text(text);//res[i].r_name
+    $('#portfolioModal .img-fluid').attr('src', imgSrc);//res[i].fields.r_img
+    // $('#portfolioModal .mb-5').text(address);
+    console.log(text , imgSrc, address)
+  });
+
+</script>
+
+{% endblock %}
