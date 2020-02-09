@@ -1,6 +1,5 @@
 {% extends 'mainapp/comtwo.html' %}
 {% block content %}  
-<body>
     <!-- <div class="curtain"></div> -->
     <div class="container">
         <header class="hd">
@@ -15,7 +14,7 @@
             </div>
         </header>
 
-        <div class="content">
+        <div class="content_swipe">
             <!-- start jtinder container -->
             <div id="tinderslide">
                 <ul>
@@ -61,15 +60,15 @@
     </div>
 
 <script>
-
-$(".right-button").click(function() {
+// button direction
+$(".right-button").on("click", function() {
   $.mobile.changePage("/swipe/like/", {
     transition: "slide",
     type: "get"
   });
 });
 
-$(".left-button").click(function() {
+$(".left-button").on("click", function() {
   $.mobile.changePage("/swipe/mypage/", {
     transition: "slide",
     reverse: true,
@@ -77,15 +76,49 @@ $(".left-button").click(function() {
   });
 });
 
-$(".center-button").click(function() {
+
+$(".center-button").on("click", function() {
   $.mobile.changePage("/swipe/", {
-    transition: "fade",
-    reloadPage: true,
+    transition: "slide",
     type: "get"
   });
 });
 
-</script>
+navigator.geolocation
+.getCurrentPosition(function (pos) {
+    latitude = pos.coords.latitude;
+    longitude = pos.coords.longitude;
+    // alert(" your location : " + latitude + ", " + longitude);
+    $
+        .ajax({
+            url: '/swipe/recognition/',
+            type: 'GET',
+            data: {
+                "latitude": latitude,
+                "longitude": longitude
+            },
+            success: function (res) {
 
-</body>
+                var html = "";
+                var shtml = "";
+
+                for (var i = 0; i < 20; i++) {
+                    html += '<li class="pane1" pk = "'+res[i].pk+'"><img src= "'
+                    html += res[i].fields.r_img
+                    html += '" width="100%" height="90%"><div>'
+                    html += res[i].fields.r_name
+                    html += '</div>'
+                    html += '<div class="like"></div>'
+                    html += '<div class="dislike"></div></li>'
+
+                    console.log(res[i].fields.r_img, res[i].fields.r_name)
+                }//for
+                $('#swipe10').append(html);
+                Init();
+            }//success
+
+        });//ajax
+});
+//navigator 자기위치 요청하는 함수
+</script>
 {% endblock %}

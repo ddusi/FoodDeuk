@@ -33,7 +33,7 @@ class LikeDislike(models.Model):
 
 
 class Member(models.Model):
-    member_id = models.AutoField(primary_key=True)
+    m_id = models.AutoField(primary_key=True)
     user_id = models.CharField(max_length=20)
     user_pw = models.CharField(max_length=20, blank=True, null=True)
     nick_name = models.CharField(max_length=20, blank=True, null=True)
@@ -63,9 +63,9 @@ class Recommend(models.Model):
 
 
 class Restaurant(models.Model):
+    r_id = models.AutoField(primary_key=True)
     r_name = models.CharField(max_length=200, blank=True, null=True)
-    r_img = models.CharField(max_length=200, blank=True, null=True)
-    r_kind = models.CharField(max_length=30, blank=True, null=True)
+    r_kind = models.CharField(max_length=100, blank=True, null=True)
     des = models.CharField(max_length=200, blank=True, null=True)
     address = models.CharField(max_length=200, blank=True, null=True)
     address_road = models.CharField(max_length=200, blank=True, null=True)
@@ -73,6 +73,7 @@ class Restaurant(models.Model):
     longitude = models.FloatField(blank=True, null=True)
     closetime = models.CharField(max_length=20, blank=True, null=True)
     number = models.CharField(max_length=20, blank=True, null=True)
+    r_img = models.CharField(max_length=300, blank=True, null=True)
 
     class Meta:
         db_table = 'restaurant'

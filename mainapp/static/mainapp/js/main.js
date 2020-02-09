@@ -14,7 +14,7 @@ function Init() {
 				url: '/swipe/likeornot/',
 				type: 'GET',
 				data: {
-					'id' : id,
+					'r_id' : id,
 					'like_dislike' : 0
 				},
 				success: function (res) {
@@ -35,7 +35,7 @@ function Init() {
 				url: '/swipe/likeornot/',
 				type: 'GET',
 				data: {
-					'id' : id,
+					'r_id' : id,
 					'like_dislike' : 1
 				},
 				success: function (res) {

@@ -17,12 +17,13 @@
 </div>
 
 <script>
-$(".right-button").click(function() {
+$(".right-button").on("click", function() {
   $.mobile.changePage("/swipe/", {
     transition: "slide",
     type: "get"
   });
 });
 </script>
+
 </body>
 {% endblock %}
