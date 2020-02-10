@@ -1,20 +1,20 @@
 {% extends 'mainapp/comtwo.html' %}
 {% block content %}  
-<body>
-<!-- <div class="curtain"></div> -->
-<div class="container">
-    <header class="hd">
-        <div class="left-button">
-        </div>
-        <div class="center-button">
-        </div>
-        <div class="right-button">
-            <i class="fas fa-stroopwafel"></i>
-        </div>
-    </header>
-    <div class="content">
-    </div>
-</div>
+
+<div data-role="page">
+  <div class="container">
+      <header class="hd">
+          <div class="left-button">
+          </div>
+          <div class="center-button">
+          </div>
+          <div class="right-button">
+              <i class="fas fa-stroopwafel"></i>
+          </div>
+      </header>
+      <div class="content">
+      </div>
+  </div>
 
 <script>
 $(".right-button").on("click", function() {
@@ -26,6 +26,6 @@ $(".right-button").on("click", function() {
   });
 });
 </script>
-
+</div>
 </body>
 {% endblock %}

@@ -9,6 +9,7 @@ from django.utils import timezone
 
 
 def like(request): #좋아요 리스트 화면
+    print('like')
     return render(request, 'mainapp/like.html', {})
 
 def mypage(request): #마이페이지
@@ -26,10 +27,14 @@ def detail(request, r_id): #음식점 상세페이지 O
 
 def swipe(request):  # 스와이프 화면
     R = Restaurant.objects.all()[:20]
+
+    print(request.session['user_id'])
     return render(
     request,
     'mainapp/swipe.html',
     {'Restaurants': R})
+
+
 
 
 def recognition(request):

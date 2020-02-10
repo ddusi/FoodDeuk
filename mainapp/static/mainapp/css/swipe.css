@@ -346,7 +346,7 @@
 
 .main_box{
     position: relative;
-    left: 5%;
+    left: 10%;
     width: 90%;
     height: calc(100vh - 250px);
 

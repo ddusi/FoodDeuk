@@ -1,6 +1,6 @@
 {% extends 'mainapp/comtwo.html' %}
 {% block content %}  
-    <!-- <div class="curtain"></div> -->
+<div data-role="page">
     <div class="container">
         <header class="hd">
             <div class="left-button">
@@ -59,6 +59,7 @@
         </div>
     </div>
 
+
 <script>
 // button direction
 $(".right-button").on("click", function() {
@@ -70,6 +71,7 @@ $(".right-button").on("click", function() {
     reloadPage: true
   });
 });
+
 
 $(".left-button").on("click", function() {
   $.mobile.changePage("/swipe/mypage/", {
@@ -92,6 +94,7 @@ $(".center-button").on("click", function() {
     reloadPage: true
   });
 });
+
 
 navigator.geolocation
 .getCurrentPosition(function (pos) {
@@ -130,4 +133,7 @@ navigator.geolocation
 });
 //navigator 자기위치 요청하는 함수
 </script>
+
+
+</div>
 {% endblock %}
