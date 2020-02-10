@@ -56,3 +56,11 @@ def signin(request):
             return redirect('signin')
         else:
             return redirect('/swipe')
+
+
+
+def main_before(request): #before 메인화면
+    return render(
+    request, 
+    'mainapp/index_before.html', 
+    {})

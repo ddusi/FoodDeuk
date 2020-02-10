@@ -1,30 +1,35 @@
 {% extends 'mainapp/common.html' %}
-{% block content%}
+{% block content %}
+
 <!-- Masthead -->
-<header class="masthead bg-primary text-white text-center">
-  <div class="container d-flex align-items-center flex-column">
-
-    <!-- Masthead Avatar Image -->
-    <img class="masthead-avatar mb-5" src="/static/mainapp/img/titleimg.png" alt="">
-
-    <!-- Masthead Heading -->
-    <h1 class="masthead-heading text-uppercase mb-0">Food득!</h1>
-
-    <!-- Icon Divider -->
-    <div class="divider-custom divider-light">
-      <div class="divider-custom-line"></div>
-      <div class="divider-custom-icon">
-        <i class="fas fa-star"></i>
+<div class="container">
+  {% comment %} <header class="hd">
+      <div class="left-button">
+          <i class="fas fa-portrait"></i>
       </div>
-      <div class="divider-custom-line"></div>
-    </div>
-    <button class="btn btn-primary btn-block text-uppercase mb-0" id="signin" onclick="move_signin()">로그인</button>
-    <button class="btn btn-primary btn-block text-uppercase mb-0" id="signup"onclick="move_signup()">회원가입</button>
-    <!-- Masthead Subheading -->
-    <p class="masthead-subheading font-weight-light mb-0"></p>
+      <div class="center-button">
+          <i class="fas fa-stroopwafel"></i>
+      </div>
+      <div class="right-button">
+          <i class="fas fa-utensils"></i>
+      </div>
+  </header> {% endcomment %}
 
+<div class="content">
+  <div class="main_box">
+    <div class="logo_box">
+      <i class="fas fa-drumstick-bite"></i>
+      <h2>fooddeuk</h2>
+    {% comment %} <img id="logo" src="/static/mainapp/img/logo.png" alt="fooddeuk"> {% endcomment %}
+    </div>
   </div>
-</header>
+  <div class="login_btn">
+    <button class="sign_btn" id="signin" onclick="move_signin()">로그인</button>
+    <button class="sign_btn" id="signup"onclick="move_signup()">회원가입</button>
+</div>
+</div>
+
+    
 <script>
   function move_signin() {
     location = 'signin/'
@@ -33,4 +38,4 @@
     location = 'signup/'
   }
 </script>
-{% endblock%}
+{% endblock %}
