@@ -2,13 +2,11 @@
 
 {% block content %}
 <div class="jumbotron signDiv">
-	<div class="container text-center">
+	<div class="container_main text-center">
 		<form class="signForm" method="post" action="/main/signup/" name="signupForm">
 			{% csrf_token %}
 			<br><br><br>
 			<h2>회원가입</h2>
-			<br></br>
-
 
 			<div class="form-group">
 				<label for="user_id">아이디</label> <input type="text" class="form-control" id="user_id" name="user_id">

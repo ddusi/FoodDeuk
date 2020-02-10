@@ -358,32 +358,30 @@
 
 
 .logo_box {
-    position: absolute;
+    position: fixed;
     display:flex;
-    padding: 0 5%;
-    width: 100%;
-    padding-top: 56%;
-
+    width: 100px;
+    padding-top: 65%;
     text-align: center;
     color:white;
-    font-size: 38px;
+    font-size: 35px;
 }
 
 .fa-drumstick-bite {
-    font-size: 68px;
+    font-size: 62px;
     padding-right: 20px;
     color:white;
 }
 
 #logo {
     padding-top: 25%;
-    padding-right: 10%;
-    width: 300px;
-    height: 300px;
+    padding-right: 4%;
+    width: 280px;
+    height: 280px;
 
 }
 
-.container {
+.container_main {
     height: 100%;
     width: 100%;
     background-image: linear-gradient(-225deg, #A445B2 0%, #D41872 52%, #FF0066 100%);}

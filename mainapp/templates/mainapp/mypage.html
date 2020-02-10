@@ -20,7 +20,9 @@
 $(".right-button").on("click", function() {
   $.mobile.changePage("/swipe/", {
     transition: "slide",
-    type: "get"
+    type: "get",
+    showLoadMsg: false,
+    reloadPage: true
   });
 });
 </script>

@@ -63,24 +63,33 @@
 // button direction
 $(".right-button").on("click", function() {
   $.mobile.changePage("/swipe/like/", {
+    allowSamePageTransition : true,
     transition: "slide",
-    type: "get"
+    type: "get",
+    showLoadMsg: false,
+    reloadPage: true
   });
 });
 
 $(".left-button").on("click", function() {
   $.mobile.changePage("/swipe/mypage/", {
+    allowSamePageTransition : true,
     transition: "slide",
     reverse: true,
-    type: "get"
+    type: "get",
+    showLoadMsg: false,
+    reloadPage: true
   });
 });
 
 
 $(".center-button").on("click", function() {
   $.mobile.changePage("/swipe/", {
-    transition: "slide",
-    type: "get"
+    allowSamePageTransition : true,
+    transition: "fade",
+    type: "get",
+    showLoadMsg: false,
+    reloadPage: true
   });
 });
 

@@ -63,7 +63,7 @@ class Recommend(models.Model):
 
 
 class Restaurant(models.Model):
-    r_id = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     r_name = models.CharField(max_length=200, blank=True, null=True)
     r_kind = models.CharField(max_length=100, blank=True, null=True)
     des = models.CharField(max_length=200, blank=True, null=True)

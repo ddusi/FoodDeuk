@@ -134,9 +134,12 @@
 <script>
 $(".left-button").on("click", function() {
   $.mobile.changePage("/swipe/", {
+    allowSamePageTransition : true,
     transition: "slide",
     reverse: true,
-    type: "get"
+    type: "get",
+    showLoadMsg: false,
+    reloadPage: true
   });
 });
 </script>
