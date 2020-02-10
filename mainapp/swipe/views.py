@@ -20,15 +20,19 @@ def mypage(request): #마이페이지
 def about(request): #어바웃 페이지
     return render(request, 'mainapp/about.html', {})
 
-def detail(request, r_id): #음식점 상세페이지 O
+def detail(request, id): #음식점 상세페이지 O
+    R = Restaurant.objects.all()
     return render(request, 'mainapp/detail/%s.html' %r_id,{})
+
+
+
     #후에 return render(request, 'mainapp/detail.html',{mysite의 detail.html 참고})
 #모델에 food_id 존재후 작성가능
 
 def swipe(request):  # 스와이프 화면
     R = Restaurant.objects.all()[:20]
 
-    print(request.session['user_id'])
+    # print(request.session['user_id'])
     return render(
     request,
     'mainapp/swipe.html',

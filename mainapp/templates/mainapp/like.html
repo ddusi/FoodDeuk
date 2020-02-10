@@ -1,6 +1,5 @@
 {% extends 'mainapp/comtwo.html' %}
 {% block content %}  
-<body>
 <div data-role="page">
     <div class="container">
         <!-- header -->
@@ -20,60 +19,15 @@
             <ul>
                 <span class="like_day">Today</span>
                 <div class="like_list_container">
-                    <li class="like_element">
-                        <div class="like_img"></div>
-                        <div class="like_text">좋아요 1</div>
-                    </li>
-                    <li class="like_element">
-                        <div class="like_img"></div>
-                        <div class="like_text">좋아요 1</div>
-                    </li>
                     
-                    <li class="like_element">
+                    <!-- <li class="like_element">
                         <div class="like_img"></div>
                         <div class="like_text">좋아요 1</div>
-                    </li>
-                    
+                    </li> -->
                     
                 </div>
             </ul>
-
-
-            <!-- <div class="content_like">
-                <span>Today</span>
-                <div class="like_list">
-                    <div class="like_element">
-
-                    </div>
-                </div>
-                <div class="like_list">
-                    <div class="like_element">
-
-                    </div>
-                </div>
-                <div class="like_list">
-                    <div class="like_element">
-
-                    </div>
-                </div>
-                <div class="like_list">
-                    <div class="like_element">
-
-                    </div>
-                </div>
-            </div> -->
-
         </div>
-        <!-- <div class="bottom actions2">
-            <a href="#" class="dislike"></i><i class="fas fa-times w"></i></a>
-            <a href="#" class="like"> <i class="fas fa-heart"></i></a>
-
-
-        </div> -->
-        <!-- <div class="bottom actions">
-            <a href="#" class="dislike"></i><i class="fas fa-times"></i></a>
-            <a href="#" class="like"> <i class="fas fa-heart"></i></a>
-        </div> -->
     </div>
 
 <script>
@@ -89,7 +43,39 @@ $(".left-button").on("click", function() {
 });
 </script>
 
+<script>
+   
+  
+        $
+          .ajax({
+            url: '/swipe/load_likeornot/',
+            type: 'GET',
+            data: {
+              "latitude": 37.5015724,
+              "longitude": 127.0393363
+            },
+            success: function (res) {
+  
+              var html = "";
+              var shtml = "";
+  
+              // 				res[0~9].id/title/latitude/longitude
+
+
+              for (var i = res.length - 1; i > res.length - 9; i--) {
+                html += '<li class ="like_elemet">'
+                html += '<img class="img-fluid" src="'
+                html += res[i].fields.r_img
+                html += '" alt="">'
+                html += '</li>'
+            }//for
+            $('.like_list_container').append(html);
+            
+          }//success
+        });//ajax
+    
+  </script>
+
 </div>
 
-</body>
 {% endblock %}

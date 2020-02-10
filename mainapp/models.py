@@ -33,7 +33,7 @@ class LikeDislike(models.Model):
 
 
 class Member(models.Model):
-    m_id = models.AutoField(primary_key=True)
+    member_id = models.AutoField(primary_key=True)
     user_id = models.CharField(max_length=20)
     user_pw = models.CharField(max_length=20, blank=True, null=True)
     nick_name = models.CharField(max_length=20, blank=True, null=True)
@@ -71,7 +71,7 @@ class Restaurant(models.Model):
     address_road = models.CharField(max_length=200, blank=True, null=True)
     latitude = models.FloatField(blank=True, null=True)
     longitude = models.FloatField(blank=True, null=True)
-    closetime = models.CharField(max_length=20, blank=True, null=True)
+    closetime = models.CharField(max_length=100, blank=True, null=True)
     number = models.CharField(max_length=20, blank=True, null=True)
     r_img = models.CharField(max_length=300, blank=True, null=True)
 

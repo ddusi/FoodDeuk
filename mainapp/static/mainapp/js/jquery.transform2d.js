@@ -548,4 +548,4 @@ $.transform = {
 	centerOrigin: "margin"
 };
 
-})( jQuery, window, document, Math );
+})( $j311, window, document, Math );

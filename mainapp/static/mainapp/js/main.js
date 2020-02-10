@@ -2,14 +2,14 @@
  * jTinder initialization
  */
 function Init() {
-	$("#tinderslide").jTinder({
+	$j311("#tinderslide").jTinder({
 		// dislike callback
 		onDislike: function (item) {
 			// set the status text
-			$('#status').html('Dislike image ' + (item.index() + 1));
-			var id =$(item).attr('pk');
+			$j311('#status').html('Dislike image ' + (item.index() + 1));
+			var id =$j311(item).attr('pk');
 			console.log(id)
-			$
+			$j311
 			.ajax({
 				url: '/swipe/likeornot/',
 				type: 'GET',
@@ -27,10 +27,10 @@ function Init() {
 		// like callback
 		onLike: function (item) {
 			// set the status text
-			$('#status').html('Like image ' + (item.index() + 1));
-			var id = $(item).attr('pk');
+			$j311('#status').html('Like image ' + (item.index() + 1));
+			var id = $j311(item).attr('pk');
 			console.log(id)
-			$
+			$j311
 			.ajax({
 				url: '/swipe/likeornot/',
 				type: 'GET',
@@ -54,8 +54,8 @@ function Init() {
 	/**
 	 * Set button action to trigger jTinder like & dislike.
 	 */
-	$('.actions .like, .actions .dislike').click(function (e) {
+	$j311('.actions .like, .actions .dislike').click(function (e) {
 		e.preventDefault();
-		$("#tinderslide").jTinder($(this).attr('class'));
+		$j311("#tinderslide").jTinder($j311(this).attr('class'));
 	});
 }

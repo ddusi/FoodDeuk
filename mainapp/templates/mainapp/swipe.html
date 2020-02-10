@@ -17,48 +17,24 @@
         <div class="content_swipe">
             <!-- start jtinder container -->
             <div id="tinderslide">
-                <ul>
-                    <li class="pane1">
-                        <div class="img">
-                        <div>Miami Beach</div>
-                        <div class="like"></div>
-                        <div class="dislike"></div>
-                    </li>
-                    <li class="pane2">
-                        <div class="img"></div>
-                        <div>San Francisco</div>
-                        <div class="like"></div>
-                        <div class="dislike"></div>
-                    </li>
-                    <li class="pane3">
-                        <div class="img"></div>
-                        <div>Chicago</div>
-                        <div class="like"></div>
-                        <div class="dislike"></div>
-                    </li>
-                    <li class="pane5">
-                        <div class="img"></div>
-                        <div>Beach</div>
-                        <div class="like"></div>
-                        <div class="dislike"></div>
-                    </li>
+                <ul id=swipe10>
+
                 </ul>
             </div>
             <!-- end jtinder container -->
             <!-- <img class="case1" src="http://placehold.it/400x800/afdr2" alt=""> -->
         </div>
-        <!-- <div class="bottom actions2">
-            <a href="#" class="dislike"></i><i class="fas fa-times w"></i></a>
-            <a href="#" class="like"> <i class="fas fa-heart"></i></a>
-
-
-        </div> -->
-        <div class="bottom actions">
+               <div class="bottom actions">
             <a href="#" class="dislike"></i><i class="fas fa-times"></i></a>
             <a href="#" class="like"> <i class="fas fa-heart"></i></a>
         </div>
     </div>
 
+<!-- jTinder -->
+<script type="text/javascript" src="/static/mainapp/js/jquery.transform2d.js"></script>
+<!-- jTinder lib -->
+<script type="text/javascript" src="/static/mainapp/js/jquery.jTinder.js"></script>
+<script type="text/javascript" src="/static/mainapp/js/main.js"></script>
 
 <script>
 // button direction
@@ -96,18 +72,14 @@ $(".center-button").on("click", function() {
 });
 
 
-navigator.geolocation
-.getCurrentPosition(function (pos) {
-    latitude = pos.coords.latitude;
-    longitude = pos.coords.longitude;
-    // alert(" your location : " + latitude + ", " + longitude);
+
     $
         .ajax({
             url: '/swipe/recognition/',
             type: 'GET',
             data: {
-                "latitude": latitude,
-                "longitude": longitude
+                "latitude": 37.5015724,
+                "longitude": 127.0393363
             },
             success: function (res) {
 
@@ -130,7 +102,8 @@ navigator.geolocation
             }//success
 
         });//ajax
-});
+
+
 //navigator 자기위치 요청하는 함수
 </script>
 

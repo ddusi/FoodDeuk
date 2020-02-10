@@ -175,4 +175,4 @@
 		return this;
 	};
 
-})(jQuery, window, document);
+})($j311, window, document);
