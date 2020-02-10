@@ -19,8 +19,8 @@ def mypage(request): #마이페이지
 def about(request): #어바웃 페이지
     return render(request, 'mainapp/about.html', {})
 
-def detail(request, r_id): #음식점 상세페이지 O
-    return render(request, 'mainapp/detail/%s.html' %r_id,{})
+def detail(request, r_code): #음식점 상세페이지 O
+    return render(request, 'mainapp/detail/%s.html' % r_code,{})
     #후에 return render(request, 'mainapp/detail.html',{mysite의 detail.html 참고})
 #모델에 food_id 존재후 작성가능
 
@@ -45,7 +45,7 @@ def recognition(request):
 def likeornot(request):
     Tlike_dislike = LikeDislike()# DB테이블 내역 불러와 Tlike_dislike에 저장
     member_id = request.session['user_id']# 현재 로그인되어 있는 정보 가져옴
-    res_id = request.GET.get('r_id')# main.js 에서 ajax로 보낸 식당id 값 저장
+    res_id = request.GET.get('id')# main.js 에서 ajax로 보낸 식당id 값 저장
     like_dis = request.GET.get('like_dislike')#main.js에서 ajax로 보낸 like_dislike 값 저장
 
     member = Member.objects.get(user_id=member_id)# DB 테이블(Member)에서 user_id 가 member_id와 동일한 내용 조회하여 저장

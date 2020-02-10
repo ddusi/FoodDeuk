@@ -1,29 +1,151 @@
 {% extends 'mainapp/comtwo.html' %}
-{% block content %}  
-<body>
-<!-- <div class="curtain"></div> -->
+{% block content %}
 <div class="container">
-    <header class="hd">
-        <div class="left-button">
-        </div>
-        <div class="center-button">
-        </div>
-        <div class="right-button">
-            <i class="fas fa-stroopwafel"></i>
-        </div>
-    </header>
-    <div class="content">
+  <!-- header -->
+  <header class="hd">
+    <div class="hd_item">
+      <div class="left-button">
+        <i class="fas fa-stroopwafel"></i>
+      </div>
+      <div class="center-button">
+      </div>
+      <div class="right-button">
+      </div>
     </div>
+  </header>
+  <!-- Portfolio Section -->
+  <section class="page-section portfolio" id="portfolio">
+    <div class="container">
+      <!-- # Portfolio Section Heading  -->
+      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">RESTAURANT LIST</h2>
+
+      <!-- Icon Divider  -->
+      <div class="divider-custom">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon">
+          <i class="fas fa-star"></i>
+        </div>
+        <div class="divider-custom-line"></div>
+      </div>
+
+      <!-- Portfolio Grid Items  -->
+      <div class="row" id="list"></div>
+      <!-- 여기에 DB 저장되어있는 값 불러옴~ -->
+
+
+    </div>
+  </section>
+
+  <!-- Portfolio Modal 1 -->
+  <div class="portfolio-modal modal fade" id="portfolioModal" tabindex="-1" role="dialog"
+    aria-labelledby="portfolioModal1Label" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">
+            <!-- <i class="fas fa-times"></i> -->
+          </span>
+        </button>
+        <div class="modal-body text-center">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-lg-8">
+                <!-- Portfolio Modal - Title -->
+                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Log Cabin</h2>
+                <!-- Icon Divider -->
+                <div class="divider-custom">
+                  <div class="divider-custom-line"></div>
+                  <div class="divider-custom-icon">
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <div class="divider-custom-line"></div>
+                </div>
+                <!-- Portfolio Modal - Image -->
+                <img class="img-fluid rounded mb-5" src="/static/mainapp/img/portfolio/cabin.png" alt="">
+                <!-- Portfolio Modal - Text -->
+                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam
+                  nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae?
+                  Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+                <button class="btn btn-primary" href="#" data-dismiss="modal">
+                  <!-- <i class="fas fa-times fa-fw"></i> -->
+                  닫기
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
+
+
 <script>
-$(".right-button").on("click", function() {
-  $.mobile.changePage("/swipe/", {
-    transition: "slide",
-    type: "get"
+  $(".right-button").on("click", function () {
+    $.mobile.changePage("/swipe/", {
+      transition: "slide",
+      type: "get"
+    });
   });
-});
 </script>
 
-</body>
+<script>
+  navigator.geolocation
+    .getCurrentPosition(function (pos) {
+      latitude = pos.coords.latitude;
+      longitude = pos.coords.longitude;
+      // alert(" your location : " + latitude + ", " + longitude);
+
+
+      $
+        .ajax({
+          url: '/swipe/recognition/',
+          type: 'GET',
+          data: {
+            "latitude": latitude,
+            "longitude": longitude
+          },
+          success: function (res) {
+
+            var html = "";
+            var shtml = "";
+
+            // 				res[0~9].id/title/latitude/longitude
+            for (var i = res.length - 1; i > res.length - 9; i--) {
+              html += '<div class="col-md-6 col-lg-4 divPage" id="' + res[i].pk + '" >'
+              html += '<div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal">'
+              html += '<div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">'
+              html += '<div class="portfolio-item-caption-content text-center text-white">'
+              html += '<i class="fas fa-plus fa-3x"></i>'
+              html += '</div>'
+              html += '</div>'
+              html += '<img class="img-fluid" src="'
+              html += res[i].fields.r_img
+              html += '" alt=""> <span class="imgText">'
+              html += res[i].fields.r_name
+              html += '</span></div>'
+              html += '<li class = "address" style = "display:none;">'
+              html += res[i].fields.address_road
+              html += '</li>'
+              html += '</div>'
+            }
+            $('#list').append(html);
+
+          }//success
+
+        });//ajax
+    });//navigator 자기위치 요청하는 함수
+  $(document).on("click", "div[data-toggle=modal]", function () {
+    var text = $(this).text();
+    var imgSrc = $(this).find('img').attr('src');
+    var address = $(this).next().text(); // 여기 질문하기!
+    $('.portfolio-modal-title').text(text);//res[i].r_name
+    $('#portfolioModal .img-fluid').attr('src', imgSrc);//res[i].fields.r_img
+    $('#portfolioModal .mb-5').text(address);
+    console.log(text, imgSrc, address)
+  });
+
+</script>
+
 {% endblock %}
