@@ -37,7 +37,7 @@ class Member(models.Model):
     user_id = models.CharField(max_length=20)
     user_pw = models.CharField(max_length=20, blank=True, null=True)
     nick_name = models.CharField(max_length=20, blank=True, null=True)
-    email = models.CharField(max_length=20, blank=True, null=True)
+    email = models.CharField(max_length=40, blank=True, null=True)
     pi = models.CharField(max_length=200, blank=True, null=True)
 
     class Meta:

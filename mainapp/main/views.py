@@ -42,25 +42,20 @@ def signup(request):
 def signin(request):
     if request.method == 'GET':
         form = LoginForm()
-        return render(request, 'mainapp/signin.html')
+        return render(request, 'mainapp/signin.html',{'form':form})
     else:
-        user_id = request.POST.get('user_id')
-        user_pw = request.POST.get('user_pw')
+        user_id = request.POST['user_id']
+        user_pw = request.POST['user_pw']
         # member = Member.objects.get(real_id=user_id, pw=user_pw)
         try:
             member = Member.objects.get(user_id=user_id, user_pw=user_pw)
-            request.session['user_id'] = member.user_id
-            request.session['user_pw'] = member.user_pw
+            # request.session['user_id'] = member.user_id
+            # request.session['member_id'] = member.member_id
 
         except Member.DoesNotExist:
-            return redirect('signin')
+            return HttpResponse('<script> alert( "로그인 실패" );</script>')
+            # return redirect('/main/signin')
         else:
             return redirect('/swipe')
 
 
-
-def main_before(request): #before 메인화면
-    return render(
-    request, 
-    'mainapp/index_before.html', 
-    {})
