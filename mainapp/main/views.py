@@ -22,6 +22,7 @@ def signup(request):
             user_pw = request.POST.get('user_pw')
             nick_name = request.POST.get('nick_name')
             email = request.POST.get('email')
+            #pi = request.POST.get('pi')
 
             #DB에 저장
             creat_user = Member(
@@ -39,23 +40,42 @@ def signup(request):
     return render(request, 'mainapp/signup.html')
 
 
+# def signin(request):
+#     if request.method == 'GET':
+#         form = LoginForm()
+#         return render(request, 'mainapp/signin.html', {'form':form})
+#     else:
+#         user_id = request.POST['user_id']
+#         user_pw = request.POST['user_pw']
+#         # member = Member.objects.get(user_id=user_id, user_pw=user_pw)
+#         try:
+#             Member.objects.get(user_id=user_id, user_pw=user_pw)
+#             # request.session['user_id'] = member.user_id
+#             # request.session['member_id'] = member.member_id
+           
+
+#         except Member.DoesNotExist:
+#             return HttpResponse('로그인 실패')
+#             # return redirect('/main/signin')
+#         else:
+#             return redirect('/swipe')
+
+
 def signin(request):
     if request.method == 'GET':
         form = LoginForm()
-        return render(request, 'mainapp/signin.html',{'form':form})
+        return render(request, 'mainapp/signin.html', {'form':form})
     else:
         user_id = request.POST['user_id']
         user_pw = request.POST['user_pw']
-        # member = Member.objects.get(real_id=user_id, pw=user_pw)
+        member = Member.objects.get(user_id=user_id, user_pw=user_pw)
+        request.session['user_id'] = member.user_id
+        request.session['member_id'] = member.member_id
+
         try:
-            member = Member.objects.get(user_id=user_id, user_pw=user_pw)
-            # request.session['user_id'] = member.user_id
-            # request.session['member_id'] = member.member_id
-
+            if member:
+                return redirect('/swipe/')
+                
         except Member.DoesNotExist:
-            return HttpResponse('<script> alert( "로그인 실패" );</script>')
-            # return redirect('/main/signin')
-        else:
-            return redirect('/swipe')
-
-
+            return redirect('/main/signin/')
+  

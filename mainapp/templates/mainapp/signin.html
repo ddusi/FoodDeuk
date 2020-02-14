@@ -1,14 +1,13 @@
 {% extends 'mainapp/common.html' %}
 {% block content %}
-<div class="jumbotron signDiv">
 	<div class="container_main text-center">
-
-		<form class="signForm" method="post" action="/swipe/">
+		<form class="signForm" method="post">
 			{% csrf_token %}
 
 			<br><br><br>
 			<h2>Login</h2>
 			<br>
+			
 			<div class="form-group">
 				<input type="text" class="form-control" id="user_id" name="user_id" placeholder="id">
 			</div>
@@ -22,15 +21,19 @@
 				</p>
 
 			</div>
-			<button class="btn btn-primary btn-block" id="signin">로그인</button>
+			<!-- <button class="btn btn-primary btn-block" type="submit" id="signin">로그인</button> -->
+			<input type="submit" value="로그인" id="signin">
 		</form>
 
 	</div>
-</div>
+
 <div class="scroll-to-top d-lg-none position-fixed ">
 	<a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top"> <i
 			class="fa fa-chevron-up"></i>
 	</a>
 </div>
 
+
+
 {% endblock %}
+
