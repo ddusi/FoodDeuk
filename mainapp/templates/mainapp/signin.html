@@ -1,7 +1,7 @@
 {% extends 'mainapp/common.html' %}
 {% block content %}
 	<div class="container_main text-center">
-		<form class="signForm" method="post">
+		<form class="signForm" method="post" action="/swipe/">
 			{% csrf_token %}
 
 			<br><br><br>

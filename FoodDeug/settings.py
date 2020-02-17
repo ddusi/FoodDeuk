@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'FoodDeug.wsgi.application'
 DATABASES = {
  'default': {
  'ENGINE': 'django.db.backends.mysql',
- 'NAME': 'fooddeug',
+ 'NAME': 'fooddeuk',
  'USER': 'root',
  'PASSWORD': '1234',
  'HOST': 'localhost',

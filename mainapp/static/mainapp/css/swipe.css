@@ -4,7 +4,6 @@
     padding: 0;
 }
 
-
 /* header 위치 나누기 부분 */
 .hd {
     position: relative;
@@ -93,17 +92,6 @@
     overflow-y: hidden;
 }
 
-/* 
-.curtain {
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: -1;
-    width: 100vw;
-    height: 100vh;
-    background:
-        linear-gradient(180deg, rgb(255, 255, 255, 0), rgb(255, 255, 255, 0));
-} */
 
 .content_swipe {
     position: relative;
@@ -112,10 +100,8 @@
     width: 94%;
     height: calc(100vh - 150px);
     overflow: auto;
-    flex: 1;
     align-items: center;
     justify-content: space-between;
-
     box-shadow: 0px 3px 9px rgba(46, 2, 2, 0.404);
     border-radius: 4px;
     overflow-x: hidden;
@@ -295,9 +281,8 @@
     padding-left:0px;
     height: 120px;
     width: 120px;
-    margin: 5px;
+    margin: 6px;
 
-    border: 1px solid;
     border-radius: 15%;
     box-shadow: 0px 3px 9px rgba(46, 2, 2, 0.404);
     border-color: transparent;
@@ -305,24 +290,13 @@
     flex: 1 1 1;
 }
 
-
-/* .like_element {
-    list-style:none;
-    padding-left:0px;
+.img-fluid {
     height: 120px;
     width: 120px;
-    margin: 5px;
-
-    border: 1px solid;
     border-radius: 15%;
     box-shadow: 0px 3px 9px rgba(46, 2, 2, 0.404);
     border-color: transparent;
-
-    
-    flex-basis: 120px;
-    min-width: 120px;
-    height: 120px;
-} */
+}
 
 .like_text {
     text-align: center;
@@ -402,13 +376,3 @@
 h2 {color: white;}
 
 
-.img-fluid {
-    height: 120px;
-    width: 120px;
-    margin: 5px;
-
-    border: 1px solid;
-    border-radius: 15%;
-    box-shadow: 0px 3px 9px rgba(46, 2, 2, 0.404);
-    border-color: transparent;
-}

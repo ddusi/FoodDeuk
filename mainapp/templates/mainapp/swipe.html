@@ -74,8 +74,10 @@ $(".center-button").on("click", function() {
 // 위치요청
 navigator.geolocation
     .getCurrentPosition(function (pos) {
-        latitude = pos.coords.latitude;
-        longitude = pos.coords.longitude;
+        var latitude = 37.49756
+        var longitude = 127.032958;
+        // var latitude = pos.coords.latitude;
+        // var longitude = pos.coords.longitude;
         // alert(" your location : " + latitude + ", " + longitude);
         $
             .ajax({
@@ -110,7 +112,5 @@ navigator.geolocation
     });
     //navigator 자기위치 요청하는 함수
 </script>
-
-
 </div>
 {% endblock %}
