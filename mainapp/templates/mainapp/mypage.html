@@ -17,6 +17,9 @@
         {% if request.session.user_id %}
         {{ request.session.user_id}}님 반갑습니다.
         {% endif %}
+        <div class="row" id="list"></div>
+
+
       </div>
   </div>
 
@@ -29,7 +32,63 @@ $(".right-button").on("click", function() {
     reloadPage: true
   });
 });
+
+navigator.geolocation
+  .getCurrentPosition(function (pos) {
+    latitude = pos.coords.latitude;
+    longitude = pos.coords.longitude;
+    // alert(" your location : " + latitude + ", " + longitude);
+
+
+    $
+      .ajax({
+        url: '/swipe/recognition/',
+        type: 'GET',
+        data: {
+          "latitude": latitude,
+          "longitude": longitude
+        },
+        success: function (res) {
+
+          var html = "";
+          var shtml = "";
+
+          // 				res[0~9].id/title/latitude/longitude
+          for (var i = res.length - 1; i > res.length - 9; i--) {
+            html += '<div class="col-md-6 col-lg-4 divPage" id="' + res[i].pk + '" >'
+            html += '<div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal">'
+            html += '<div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">'
+            html += '<div class="portfolio-item-caption-content text-center text-white">'
+            html += '<i class="fas fa-plus fa-3x"></i>'
+            html += '</div>'
+            html += '</div>'
+            html += '<img class="img-fluid" src="'
+            html += res[i].fields.r_img
+            html += '" alt=""> <span class="imgText">'
+            html += res[i].fields.r_name
+            html += '</span></div>'
+            html += '<li class = "address" style = "display:none;">'
+            html += res[i].fields.address_road
+            html += '</li>'
+            html += '</div>'
+          }
+          $('#list').append(html);
+
+        }//success
+
+      });//ajax
+  });//navigator 자기위치 요청하는 함수
+
+$(document).on("click", "div[data-toggle=modal]", function () {
+  var text = $(this).text();
+  var imgSrc = $(this).find('img').attr('src');
+  var address = $(this).next().text(); // 여기 질문하기!
+  $('.portfolio-modal-title').text(text);//res[i].r_name
+  $('#portfolioModal .img-fluid').attr('src', imgSrc);//res[i].fields.r_img
+  $('#portfolioModal .mb-5').text(address);
+  console.log(text, imgSrc, address)
+});
 </script>
-</div>
-</body>
+
+
 {% endblock %}

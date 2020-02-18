@@ -1,0 +1,35 @@
+{% extends 'mainapp/comtwo.html' %}
+{% block content %}  
+
+<div data-role="page">
+  <div class="container">
+      <header class="hd">
+          <div class="left-button">
+            {{ request.member.user_id }}
+          </div>
+          <div class="center-button">
+          </div>
+          <div class="right-button">
+              <i class="fas fa-stroopwafel"></i>
+          </div>
+      </header>
+      <div class="content">
+        {% if request.session.user_id %}
+        {{ request.session.user_id}}님 반갑습니다.
+        {% endif %}
+      </div>
+  </div>
+
+<script>
+$(".right-button").on("click", function() {
+  $.mobile.changePage("/swipe/", {
+    transition: "slide",
+    type: "get",
+    showLoadMsg: false,
+    reloadPage: true
+  });
+});
+</script>
+</div>
+</body>
+{% endblock %}
