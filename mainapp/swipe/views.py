@@ -20,10 +20,25 @@ def mypage(request): #마이페이지
 def about(request): #어바웃 페이지
     return render(request, 'mainapp/about.html', {})
 
-def detail(request, id): #음식점 상세페이지 O
-    R = Restaurant.objects.all()
-    return render(request, 'mainapp/detail/%s.html' %r_id,{})
+# def detail(request, id): #음식점 상세페이지 O
+#     R = Restaurant.objects.all()
+    # return render(request, 'mainapp/detail/%s.html' %id, {})
+    # return HttpResponse("%s" %id, {})
+    # return redirect('/swipe/detail/%s' %id, {})
 
+
+def detail(request, id):
+    R = Restaurant.objects.all()
+    context = {'Restaurant': R}
+    # context = {
+    #     'r_name': R.r_name,
+    #     'r_kind' : r_kind,
+    #     'des' : des,
+    #     'address' : address,
+    #     'closetime' : closetime,
+    #     'number' : number,
+    #     }
+    return render(request, 'mainapp/detail.html', context)
 
 
     #후에 return render(request, 'mainapp/detail.html',{mysite의 detail.html 참고})
