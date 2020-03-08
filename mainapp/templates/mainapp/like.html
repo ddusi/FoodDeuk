@@ -44,9 +44,7 @@ $(".left-button").on("click", function() {
 </script>
 
 <script>
-   
-  
-        $
+        $j311
           .ajax({
             url: '/swipe/load_likeornot/',
             type: 'GET',
@@ -64,9 +62,11 @@ $(".left-button").on("click", function() {
 
               for (var i = res.length - 1; i > res.length - 9; i--) {
                 html += '<li class ="like_element">'
+                html += '<a href="/swipe/detail/1">'
                 html += '<img class="img-fluid" src="'
                 html += res[i].fields.r_img
                 html += '" alt="">'
+                html += '</a>'
                 html += '</li>'
             }//for
             $('.like_list_container').append(html);

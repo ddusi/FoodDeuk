@@ -1,16 +1,19 @@
 from django.shortcuts import render, redirect
 from django.core import serializers
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse, Http404
 from mainapp.models import *
+from mainapp.models import Restaurant
 from scipy.spatial import distance
 from django.utils import timezone
-
-
+from django.template import loader
 
 
 def like(request): #좋아요 리스트 화면
-    print('like')
-    return render(request, 'mainapp/like.html', {})
+    R = Restaurant.objects.all()
+    return render(request, 'mainapp/like.html', {'Restaurant': R})
+
+# def like(request): #좋아요 리스트 화면
+#     return render(request, 'mainapp/like.html', {})
 
 def mypage(request): #마이페이지
     return render(request,
@@ -28,17 +31,12 @@ def about(request): #어바웃 페이지
 
 
 def detail(request, id):
-    R = Restaurant.objects.all()
-    context = {'Restaurant': R}
-    # context = {
-    #     'r_name': R.r_name,
-    #     'r_kind' : r_kind,
-    #     'des' : des,
-    #     'address' : address,
-    #     'closetime' : closetime,
-    #     'number' : number,
-    #     }
-    return render(request, 'mainapp/detail.html', context)
+    try:
+        R = Restaurant.objects.get(pk=id)
+    except Restaurant.DoesNotExist:
+        raise Http404("Restaurant does not exist")
+    return render(request, 'mainapp/detail.html', {'Restaurant': R})
+
 
 
     #후에 return render(request, 'mainapp/detail.html',{mysite의 detail.html 참고})
