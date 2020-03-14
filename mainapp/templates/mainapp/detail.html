@@ -16,14 +16,21 @@
 
       <div class="content_detail">
         <div class="detail_imgbox">
+        <div class="back_button"><i class="fas fa-times"></i></div>
         <img class="detail_img" src="{{ Restaurant.r_img }}" alt=""></p>
         </div>
-        <p>{{ Restaurant.r_name }}</p>
-        <p>{{ Restaurant.r_kind }}</p>
-        <p>{{ Restaurant.des }}</p>
-        <p>{{ Restaurant.address }}</p>
-        <p>{{ Restaurant.closetime }}</p> 
-        <p>{{ Restaurant.number }}</p>
+        <div class="detail_title">
+          <div class="r_name">{{ Restaurant.r_name }} <span>1km</span></div>
+          <div class="detail_script">
+            <div class="r_kind"><i class="fas fa-utensils"></i> {{ Restaurant.r_kind }}</div>
+            <div class="address"><i class="fas fa-map-marker-alt"></i> {{ Restaurant.address }}</div>
+            <div class="closetime"><i class="far fa-clock"></i> {{ Restaurant.closetime }}</div>
+            <div class="number"><i class="fas fa-phone-alt"></i> {{ Restaurant.number }}</div>
+        </div>
+      </div>
+        <hr>
+        <div class="detail_map"><br>카카오 지도</div>
+
         
   </div>
 
@@ -68,5 +75,11 @@ $.mobile.changePage("/swipe/", {
 });
 });
 </script>
-
+<script>
+$(".back_button").on("click", function() {
+  parent.history.back();
+  return false;
+});
+</script>
+$.mobile.back();
 {% endblock %}

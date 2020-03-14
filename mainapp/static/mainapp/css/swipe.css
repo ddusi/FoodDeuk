@@ -388,3 +388,48 @@ h2 {color: white;}
     height: 414px;
 }
 
+.content_detail {
+    background-color: white;
+    height: 100vh;
+}
+
+.r_name {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 10px;
+}
+.r_name span {
+    font-size: 20px;
+}
+
+.detail_script {
+
+    font-weight: 600;
+    color: gray;
+}
+
+.r_kind{
+    margin: 14px;
+}
+
+.address{
+    margin: 14px;
+}
+
+.closetime{
+    margin: 14px;
+}
+
+.number{
+    margin: 14px;
+}
+
+.detail_title i {
+    margin-right: 10px;
+}
+
+.back_button {
+    position: absolute;
+    margin-top: 45vh;
+    margin-left: 49vh;
+}
