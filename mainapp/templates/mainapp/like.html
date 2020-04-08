@@ -52,7 +52,7 @@ $(".left-button").on("click", function() {
               "latitude": 37.5015724,
               "longitude": 127.0393363
             },
-            success: function (res) {
+            success: function (likeres) {
   
               var html = "";
               var shtml = "";
@@ -60,11 +60,11 @@ $(".left-button").on("click", function() {
               // 				res[0~9].id/title/latitude/longitude
 
 
-              for (var i = res.length - 1; i > res.length - 9; i--) {
+              for (var i = likeres.length - 1; i > likeres.length - 9; i--) {
                 html += '<li class ="like_element">'
                 html += '<a href="/swipe/detail/1">'
                 html += '<img class="img-fluid" src="'
-                html += res[i].fields.r_img
+                html += likeres[i].fields.r_img
                 html += '" alt="">'
                 html += '</a>'
                 html += '</li>'

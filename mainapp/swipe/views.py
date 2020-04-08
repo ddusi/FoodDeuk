@@ -55,11 +55,16 @@ def swipe(request):  # 스와이프 화면
 
 
 def recognition(request):
-    Mylatitude = request.GET.get('latitude')
-    Mylongitude = request.GET.get('longitude')
+    # Mylatitude = request.GET.get('latitude')
+    # Mylongitude = request.GET.get('longitude')
+    # sql = '''SELECT *, (6371*acos(cos(radians(''' + Mylatitude + '''))*cos(radians(latitude))*cos(radians(longitude)
+    # -radians('''+Mylongitude+'''))+sin(radians('''+Mylatitude+'''))*sin(radians(latitude))))
+    #  AS distance FROM Restaurant HAVING distance <= 20 ORDER BY distance LIMIT 0,300'''
+    Mylatitude = str(37.5015724)
+    Mylongitude = str(127.0393363)
     sql = '''SELECT *, (6371*acos(cos(radians(''' + Mylatitude + '''))*cos(radians(latitude))*cos(radians(longitude)
-    -radians('''+Mylongitude+'''))+sin(radians('''+Mylatitude+'''))*sin(radians(latitude))))
-     AS distance FROM Restaurant HAVING distance <= 20 ORDER BY distance LIMIT 0,300'''
+    -radians(''' + Mylongitude + '''))+sin(radians(''' + Mylatitude + '''))*sin(radians(latitude))))
+    AS distance FROM Restaurant HAVING distance <= 20 ORDER BY distance LIMIT 0,300'''
     res = Restaurant.objects.raw(sql)# SQL 문에서 반경 20KM 이내 값만 조회하여 가져옴
     res_json = serializers.serialize('json', res)   
     return HttpResponse(res_json, content_type='application/json')
@@ -83,7 +88,13 @@ def likeornot(request):
     return HttpResponse('DB입력 OK')
 
 def load_likeornot(request):
-    sql = '''select restaurant.id,restaurant.r_name,restaurant.r_img,restaurant.r_kind,restaurant.des,restaurant.address,restaurant.address_road,restaurant.latitude,restaurant.longitude,restaurant.closetime,restaurant.number from restaurant join like_dislike on restaurant.id = like_dislike.r_id where like_dislike=1;'''
+    sql = '''select restaurant.id, restaurant.r_name,
+            restaurant.r_img, restaurant.r_kind,
+            restaurant.des, restaurant.address, 
+            restaurant.address_road, restaurant.latitude,
+            restaurant.longitude, restaurant.closetime,
+            restaurant.number 
+            from restaurant join like_dislike on restaurant.id = like_dislike.r_id where like_dislike=1;'''
     likeres = Restaurant.objects.raw(sql)# SQL 문에서 반경 20KM 이내 값만 조회하여 가져옴
     likeres_json = serializers.serialize('json', likeres) 
     return HttpResponse(likeres_json, content_type='application/json')
