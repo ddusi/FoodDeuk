@@ -75,6 +75,7 @@ def signin(request):
         
         if member:
             return redirect('/swipe/')
+            # return render(request, 'mainapp/swipe.html')
         else:
             return redirect('/main')
    
