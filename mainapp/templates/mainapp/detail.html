@@ -20,7 +20,8 @@
         <img class="detail_img" src="{{ Restaurant.r_img }}" alt=""></p>
         </div>
         <div class="detail_title">
-          <div class="r_name">{{ Restaurant.r_name }} <span>1km</span></div>
+          <div class="r_name">{{ Restaurant.r_name }} 
+          <span id="detail_dis"> km</span></div>
           <div class="detail_script">
             <div class="r_kind"><i class="fas fa-utensils"></i> {{ Restaurant.r_kind }}</div>
             <div class="address"><i class="fas fa-map-marker-alt"></i> {{ Restaurant.address }}</div>
@@ -81,4 +82,23 @@ $(".back_button").on("click", function() {
   return false;
 });
 </script>
+
+<script>
+  
+  $j311
+    .ajax({
+      url: '/swipe/distance/',
+      type: 'GET',
+      data: {
+        "latitude": 37.5015724,
+        "longitude": 127.0393363
+      },
+      success: function (dis) {
+        var detail_dis = dis[{{ Restaurant.id }}].fields.distance + 'km';
+        document.getElementById("detail_dis").innerHTML=detail_dis;
+      }//success
+  });//ajax
+
+</script>
+
 {% endblock %}

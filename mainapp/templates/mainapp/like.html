@@ -1,34 +1,29 @@
 {% extends 'mainapp/comtwo.html' %}
 {% block content %}  
-<div data-role="page">
-    <div class="container">
-        <!-- header -->
-        <header class="hd">
-            <div class="hd_item">
-                <div class="left-button">
-                    <i class="fas fa-stroopwafel"></i>
-                </div>
-                <div class="center-button">
-                </div>
-                <div class="right-button">
-                </div>
-            </div>
-        </header>
 
-        <div class="content_like">
-            <ul>
-                <span class="like_day">Today</span>
-                <div class="like_list_container">
-                    
-                    <!-- <li class="like_element">
-                        <div class="like_img"></div>
-                        <div class="like_text">좋아요 1</div>
-                    </li> -->
-                    
-                </div>
-            </ul>
-        </div>
+<div data-role="page">
+  <div class="container">
+    <!-- header -->
+    <header class="hd">
+      <div class="left-button">
+        <i class="fas fa-stroopwafel"></i>
+      </div>
+      <div class="center-button"></div>
+      <div class="right-button"></div>
+    </header>
+
+    <div class="content_like">
+        <ul>
+          <span class="like_day">Today</span>
+          <div class="like_list_container">
+              <!-- <li class="like_element">
+                  <div class="like_img"></div>
+                  <div class="like_text">좋아요 1</div>
+              </li> -->
+          </div>
+        </ul>
     </div>
+  </div>
 
 <script>
 $(".left-button").on("click", function() {
@@ -62,7 +57,8 @@ $(".left-button").on("click", function() {
 
               for (var i = likeres.length - 1; i > likeres.length - 9; i--) {
                 html += '<li class ="like_element">'
-                html += '<a href="/swipe/detail/1">'
+                html += '<a href="/swipe/detail/'
+                html += likeres[i].pk + '" rel="external">'
                 html += '<img class="img-fluid" src="'
                 html += likeres[i].fields.r_img
                 html += '" alt="">'
@@ -73,9 +69,8 @@ $(".left-button").on("click", function() {
             
           }//success
         });//ajax
+
     
   </script>
-
 </div>
-
 {% endblock %}

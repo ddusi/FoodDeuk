@@ -3,36 +3,35 @@
 
 <div data-role="page">
   <div class="container">
-      <header class="hd">
-          <div class="left-button"></div>
-          <div class="center-button"></div>
-          <div class="right-button">
-              <i class="fas fa-stroopwafel"></i>
-          </div>
-      </header>
-      <div class="content">
-        {% if request.session.user_id %}
-        {{ request.session.user_id}}님 반갑습니다.
-        {% endif %}
-        {{ request.member.user_id }}님 반갑습니다.
-        아아 테스트 
-        <div class="row" id="list">아아아이</div>
-
-
+    <!-- header -->
+    <header class="hd">
+      <div class="left-button"></div>
+      <div class="center-button"></div>
+      <div class="right-button" id="right">
+        <i class="fas fa-stroopwafel"></i>
       </div>
+    </header>
+
+    <div class="content_mypage">
+      {% if request.session.user_id %}
+      {{ request.session.user_id}}님 반갑습니다.
+      {% endif %}
+      <div class="row" id="list"></div>
+    </div>
   </div>
-</div>
 
-<script>
-$(".right-button").on("click", function() {
-  $.mobile.changePage("/swipe/", {
-    transition: "slide",
-    type: "get",
-    showLoadMsg: false,
-    reloadPage: true
+
+
+  <script>
+  $("#right").on("click", function() {
+    $.mobile.changePage("/swipe/", {
+      allowSamePageTransition : true,
+      transition: "slide",
+      type: "get",
+      showLoadMsg: false,
+      reloadPage: true
+    });
   });
-});
-</script>
-
-
+  </script>
+</div>
 {% endblock %}
