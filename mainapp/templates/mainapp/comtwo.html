@@ -19,36 +19,37 @@
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
     type="text/css">
 
+  <!-- jQuery $311 -->
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script>
+    var $j311 = jQuery.noConflict();
+  </script>
 
+  <!-- jQuery Mobile -->
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+
+
+
+  <!-- Plugin JavaScript -->
+  <script src="/static/mainapp/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <!-- Contact Form JavaScript -->
+  <script src="/static/mainapp/js/jqBootstrapValidation.js"></script>
+
+  <!-- new Templates Css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'mainapp/css/jTinder.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'mainapp/css/swipe.css' %}">
 </head>
 
-<body id="page-top">
+<body>
+<p>--------------------------------------------------<p>
+<p>---------------test----------------<p>
+<p>--------------------------------------------------<p>
 
 {% block content %}
 {% endblock %}
 
-<!-- jQuery $311 -->
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script>
-  var $j311 = jQuery.noConflict();
-</script>
-
-<!-- jQuery Mobile -->
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
-<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
-
-
-
-<!-- Plugin JavaScript -->
-<script src="/static/mainapp/vendor/jquery-easing/jquery.easing.min.js"></script>
-<!-- Contact Form JavaScript -->
-<script src="/static/mainapp/js/jqBootstrapValidation.js"></script>
-
-<!-- new Templates Css -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-<link rel="stylesheet" type="text/css" href="{% static 'mainapp/css/jTinder.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'mainapp/css/swipe.css' %}">
-<div>
-
+</body>
 </html>
