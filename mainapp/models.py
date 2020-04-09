@@ -74,7 +74,8 @@ class Restaurant(models.Model):
     closetime = models.CharField(max_length=100, blank=True, null=True)
     number = models.CharField(max_length=20, blank=True, null=True)
     r_img = models.CharField(max_length=300, blank=True, null=True)
-
+    distance = models.FloatField(blank=True, null=True)
+    
     class Meta:
         db_table = 'restaurant'
 

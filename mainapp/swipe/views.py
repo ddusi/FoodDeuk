@@ -49,7 +49,27 @@ def swipe(request):  # 스와이프 화면
     'mainapp/swipe.html',
     {'Restaurants': R})
 
+# [{"model": "mainapp.restaurant", "pk": 291, "fields": 
+# {
+#     "r_name": "\uae84\ube0c\ub2e4\uc774\ub2dd & \uc0f5+291", 
+#     "r_kind": "\uc640\uc778", "des": "\uc640\uc778", 
+#     "address": "\uc11c\uc6b8 \uac15\ub0a8\uad6c \ud14c\ud5e4\ub780\ub85c33\uae38 5", 
+#     "address_road": "\uc5ed\uc0bc\ub3d9 678-29 \ube44\uc5d8\ud0c0\uc6cc 1,2\uce35", 
+#     "latitude": 37.502167, 
+#     "longitude": 127.039345, 
+#     "closetime": "\ud3c9\uc77c 11:00 - 24:00\uc0f5(\ud1a0\uc694\uc77c 22:00 \ub9c8\uac10)", 
+#     "number": "02-564-0723", 
+#     "r_img": "/static/mainapp/img/pane/291-1.png"}},
 
+def distance(request):
+    Mylatitude = str(37.5015724)
+    Mylongitude = str(127.0393363)
+    sql = '''SELECT id, ROUND(6371*acos(cos(radians(''' + Mylatitude + '''))*cos(radians(latitude))*cos(radians(longitude)
+    -radians(''' + Mylongitude + '''))+sin(radians(''' + Mylatitude + '''))*sin(radians(latitude))),2)
+    AS distance FROM Restaurant;'''
+    dis = Restaurant.objects.raw(sql)
+    dis_json = serializers.serialize('json', dis)   
+    return HttpResponse(dis_json, content_type='application/json')
 
 
 def recognition(request):
