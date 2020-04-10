@@ -16,6 +16,7 @@
       {% if request.session.user_id %}
       {{ request.session.user_id}}님 반갑습니다.
       {% endif %}
+      <div id="map" style="width:500px;height:400px;"></div>
       <div class="row" id="list"></div>
     </div>
   </div>
@@ -33,5 +34,16 @@
     });
   });
   </script>
+
+  {% comment %} <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=72895519bb155d53f36c9923e94920dd&autoload=false"></script>
+  <script>
+		var container = document.getElementById('map');
+		var options = {
+			center: new kakao.maps.LatLng(33.450701, 126.570667),
+			level: 3
+		};
+
+		var map = new kakao.maps.Map(container, options);
+	</script> {% endcomment %}
 </div>
 {% endblock %}
