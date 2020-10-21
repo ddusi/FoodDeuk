@@ -22,8 +22,8 @@
 
    ```
     /main
-    			/singup
-    			/singin
+    			/signup
+    			/signin
     /swipe 
     			/mypage
     			/detail/<int:id>
